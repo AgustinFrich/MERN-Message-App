@@ -12,7 +12,7 @@ import useEnvironment from "./hooks/useEnvironment";
 function App() {
   const [user, setUser] = useState({ setted: false });
 
-  const { joinUser } = useSocket();
+  const { joinUser, otherUser } = useSocket();
   const { API_URL } = useEnvironment();
 
   //LOGIN
@@ -53,9 +53,7 @@ function App() {
             <SearchBar />
             <ChatList user={user} />
           </div>
-          <div>
-            <Chat user={user} />
-          </div>
+          <div>{otherUser ? <Chat user={user} /> : <></>}</div>
         </div>
       ) : (
         <>
