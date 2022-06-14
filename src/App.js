@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Chat from "./Components/Chat/Chat";
 import ChatList from "./Components/Menu/ChatList";
-import Login from "./Components/Menu/Login";
+import Login from "./Components/Menu/SignUp/Login";
 import Profile from "./Components/Menu/Profile";
 import SearchBar from "./Components/Menu/SearchBar";
 import { useSocket } from "./Providers/socketProvider";

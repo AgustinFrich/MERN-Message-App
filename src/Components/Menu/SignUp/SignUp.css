@@ -1,0 +1,46 @@
+.SignUp {
+  width: 750px;
+}
+
+.SignUp-image {
+  margin-top: 30%;
+  margin-left: 15%;
+  color: white;
+  margin-right: 25%;
+}
+
+.SignUp-imageTitle {
+  font-size: 40px;
+}
+
+.SignUp-Form {
+  margin: 10%;
+}
+
+.SignUp-EraseBorder {
+  border-color: black;
+  border-radius: 0%;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  margin-bottom: 10px;
+}
+
+.SignUp-FormGroup {
+  margin-bottom: 30px;
+}
+
+.SignUp-Button {
+  color: white;
+  background-color: hsl(224, 58%, 33%);
+  align-self: center;
+  font-weight: 600;
+  display: flexbox;
+  width: 100%;
+  height: 45px;
+}
+
+.SignUp-SignIn {
+  margin-top: 5px;
+  text-align: center;
+}
