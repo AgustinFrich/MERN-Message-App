@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Chat from "./Components/Chat/Chat";
 import ChatList from "./Components/Menu/ChatList";

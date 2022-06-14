@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react";
 import "./ChatMessages.css";
 import { useSocket } from "../../Providers/socketProvider";
 const ChatMessages = ({ user }) => {

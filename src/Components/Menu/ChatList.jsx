@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSocket } from "../../Providers/socketProvider";
 
 const ChatList = ({ user }) => {
