@@ -1,0 +1,25 @@
+.myMessage {
+  text-align: right;
+}
+
+.otherMessage {
+  text-align: left;
+}
+
+.message,
+.messageName {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.messageName {
+  font-size: small;
+}
+.message {
+  font-size: large;
+}
+
+.center {
+  margin-left: 40%;
+  margin-right: 40%;
+}
