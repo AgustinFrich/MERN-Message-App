@@ -12,7 +12,7 @@ const Login = ({
   errorMsg,
 }) => {
   // const navigate = useNavigate();
-  const image = require("./image.jpg");
+  const image = "./LogInImage.jpg";
 
   if (loading) {
     return (
