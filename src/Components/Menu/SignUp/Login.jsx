@@ -26,7 +26,7 @@ const Login = ({
     );
   }
   return (
-    <div className="SignUp d-flex justify-content-center m-5">
+    <div className="SignUp d-flex justify-content-center">
       <br />
       <CardGroup>
         <Card>

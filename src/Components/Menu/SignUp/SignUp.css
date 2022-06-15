@@ -1,5 +1,15 @@
-.SignUp {
-  width: 750px;
+@media (max-width: 576px) {
+  .SignUp {
+    width: 100%;
+  }
+  .SignUp-image {
+    height: 150px;
+  }
+}
+@media (min-width: 577px) {
+  .SignUp {
+    width: 750px;
+  }
 }
 
 .SignUp-image {
