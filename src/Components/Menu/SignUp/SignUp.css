@@ -1,19 +1,24 @@
 @media (max-width: 576px) {
   .SignUp {
-    width: 100%;
+    width: 101%;
+  }
+  .SignUp-FirstCard {
+    height: 250px;
   }
   .SignUp-image {
-    height: 150px;
+    margin-top: 20%;
   }
 }
 @media (min-width: 577px) {
   .SignUp {
     width: 750px;
   }
+  .SignUp-image {
+    margin-top: 30%;
+  }
 }
 
 .SignUp-image {
-  margin-top: 30%;
   margin-left: 15%;
   color: white;
   margin-right: 25%;

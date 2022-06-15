@@ -26,10 +26,9 @@ const Login = ({
     );
   }
   return (
-    <div className="SignUp d-flex justify-content-center">
-      <br />
-      <CardGroup>
-        <Card>
+    <div className="SignUp">
+      <CardGroup className="SignUp-FirstCard">
+        <Card className="SignUp-FirstCard">
           <Card.Img src={image} alt="Card image" />
           <Card.ImgOverlay className="SignUp-image">
             <Card.Title className="SignUp-imageTitle">Log In</Card.Title>

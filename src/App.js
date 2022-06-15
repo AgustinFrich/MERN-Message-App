@@ -61,7 +61,7 @@ function App() {
           <div>{otherUser ? <Chat user={user} /> : <></>}</div>
         </div>
       ) : (
-        <div className="flex">
+        <div className="">
           <Login
             login={login}
             username={username}
