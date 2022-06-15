@@ -22,23 +22,28 @@ function App() {
   const [errorMsg, setErrorMsg] = useState("");
 
   const login = async (e) => {
-    setLoading(true);
-    e.preventDefault();
+    try {
+      setLoading(true);
+      e.preventDefault();
+      console.log(username);
 
-    const response = await axios.get(
-      `${API_URL}/api/login/${username}&${password}`
-    );
-    console.log(response);
-    setLoading(false);
+      const response = await axios.get(
+        `${API_URL}/api/login/${username}&${password}`
+      );
 
-    if (response.data.user) {
-      // localStorage.setItem("token", response.data.user);
-      //navigate("../dashboard");
-      response.data.user.setted = true;
-      setUser(response.data.user);
-      joinUser(response.data.user);
-    } else {
-      setErrorMsg("Username or password are incorrect.");
+      if (response.data.user) {
+        // localStorage.setItem("token", response.data.user);
+        //navigate("../dashboard");
+        response.data.user.setted = true;
+        setUser(response.data.user);
+        joinUser(response.data.user);
+      } else {
+        setErrorMsg(response.data.error);
+      }
+    } catch (error) {
+      setErrorMsg("Username or password are empty");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,7 +61,7 @@ function App() {
           <div>{otherUser ? <Chat user={user} /> : <></>}</div>
         </div>
       ) : (
-        <>
+        <div className="flex">
           <Login
             login={login}
             username={username}
@@ -66,7 +71,7 @@ function App() {
             setPassword={setPassword}
             errorMsg={errorMsg}
           />
-        </>
+        </div>
       )}
     </>
   );

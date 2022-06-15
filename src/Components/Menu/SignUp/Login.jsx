@@ -26,13 +26,13 @@ const Login = ({
     );
   }
   return (
-    <div className="SignUp">
+    <div className="SignUp d-flex justify-content-center m-5">
       <br />
       <CardGroup>
         <Card>
           <Card.Img src={image} alt="Card image" />
           <Card.ImgOverlay className="SignUp-image">
-            <Card.Title className="SignUp-imageTitle">Sign Up</Card.Title>
+            <Card.Title className="SignUp-imageTitle">Log In</Card.Title>
             <Card.Text>
               Join us and share with us <br /> this wonderful experience.
               <hr />
@@ -41,7 +41,7 @@ const Login = ({
         </Card>
 
         <Card>
-          <Form className="SignUp-Form">
+          <Form className="SignUp-Form" onSubmit={login}>
             <Form.Group className="SignUp-FormGroup">
               <Form.Label>Username</Form.Label>
               <Form.Control
@@ -64,7 +64,14 @@ const Login = ({
                 value={password}
               />
             </Form.Group>
-            <Button className="SignUp-Button">Get Started</Button>
+            {errorMsg !== "" ? (
+              <p style={{ color: "#FF0000" }}>{errorMsg}</p>
+            ) : (
+              <></>
+            )}
+            <Button className="SignUp-Button" type="submit">
+              Log In
+            </Button>
             <p className="SignUp-SignIn">
               Already have an account? <a href="log-in">Sign In</a>
             </p>
