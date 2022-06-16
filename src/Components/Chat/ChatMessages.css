@@ -1,9 +1,15 @@
 .myMessage {
   text-align: right;
+  background-color: #befcf9;
+  padding-right: 10px;
+  border-radius: 10px 0px 10px 10px;
 }
 
 .otherMessage {
   text-align: left;
+  background-color: rgba(230, 230, 230, 1);
+  padding-left: 10px;
+  border-radius: 0px 10px 10px 10px;
 }
 
 .message,
@@ -12,14 +18,24 @@
   margin-bottom: 0px;
 }
 
-.messageName {
-  font-size: small;
-}
 .message {
   font-size: large;
+  padding-bottom: 8px;
 }
 
 .center {
-  margin-left: 40%;
-  margin-right: 40%;
+  margin-left: calc(50% - 200px);
+  margin-right: calc(50% - 200px);
+}
+
+.mySvg {
+  fill: #befcf9;
+  position: absolute;
+  transform: translateX(8px);
+}
+
+.otherSvg {
+  fill: rgba(230, 230, 230, 1);
+  position: absolute;
+  transform: translateX(-16px);
 }

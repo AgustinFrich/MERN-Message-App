@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useSocket } from "../../Providers/socketProvider";
 
-const ChatSender = ({ user }) => {
-  const { sendMessage, otherUser } = useSocket();
+const ChatSender = () => {
+  const { sendMessage, otherUser, user } = useSocket();
   const [message, setMessage] = useState("");
+
   const handleSend = () => {
+    if (message === "") return;
     sendMessage(message, user.id, user.name, otherUser.id);
+    setMessage("");
   };
 
   return (
@@ -15,6 +18,7 @@ const ChatSender = ({ user }) => {
         onChange={(e) => {
           setMessage(e.target.value);
         }}
+        value={message}
       ></input>
       <button onClick={handleSend}>SEND</button>
     </div>

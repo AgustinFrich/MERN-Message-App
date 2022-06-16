@@ -1,0 +1,30 @@
+.Profile {
+  display: inline-flex;
+  align-items: center;
+  margin-left: calc(50% - 50px);
+  margin-right: calc(50% - 50px);
+}
+
+.Profile-Image {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.Profile-Name {
+  margin-left: 10px;
+}
+.Profile-Online,
+.Profile-Offline {
+  margin-left: 20px;
+  transform: translateY(2px);
+}
+
+.Profile-Online {
+  fill: #33aa33;
+}
+
+.Profile-Offline {
+  fill: #777777;
+}

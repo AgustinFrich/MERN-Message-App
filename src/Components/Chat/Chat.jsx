@@ -4,12 +4,12 @@ import ChatHeader from "./ChatHeader";
 import ChatMessages from "./ChatMessages";
 import ChatSender from "./ChatSender";
 
-const Chat = ({ user }) => {
+const Chat = () => {
   return (
     <div>
       <ChatHeader />
-      <ChatMessages user={user} />
-      <ChatSender user={user} />
+      <ChatMessages />
+      <ChatSender />
     </div>
   );
 };

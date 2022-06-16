@@ -5,8 +5,8 @@ import useEnvironment from "../../../hooks/useEnvironment";
 import { useSocket } from "../../../Providers/socketProvider";
 import AccesForm from "./AccesForm";
 
-const Login = ({ setUser }) => {
-  const { joinUser } = useSocket();
+const Login = () => {
+  const { joinUser, setUser } = useSocket();
   const { API_URL } = useEnvironment();
 
   //LOGIN

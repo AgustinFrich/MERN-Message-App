@@ -1,0 +1,10 @@
+.ChatList-User {
+  width: 200px;
+  border: #888888 solid 2px;
+  border-radius: 10px;
+}
+
+.ChatList-Container {
+  margin-left: calc(50% - 100px);
+  margin-right: calc(50% - 100px);
+}

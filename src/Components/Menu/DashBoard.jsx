@@ -2,12 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSocket } from "../../Providers/socketProvider";
 import Chat from "../Chat/Chat";
-import ChatList from "./ChatList";
+import ChatList from "./Chat List/ChatList";
 import Profile from "./Profile";
-import SearchBar from "./SearchBar";
+import SearchBar from "./Chat List/SearchBar";
 
-const DashBoard = ({ user }) => {
-  const { otherUser } = useSocket();
+const DashBoard = () => {
+  const { otherUser, user } = useSocket();
   const navigate = useNavigate();
 
   return (
@@ -15,11 +15,11 @@ const DashBoard = ({ user }) => {
       {user.setted === true ? (
         <div className="App">
           <div>
-            <Profile user={user} />
+            <Profile />
             <SearchBar />
-            <ChatList user={user} />
+            <ChatList />
           </div>
-          <div>{otherUser ? <Chat user={user} /> : <></>}</div>
+          <div>{otherUser ? <Chat /> : <></>}</div>
         </div>
       ) : (
         navigate("../signup")

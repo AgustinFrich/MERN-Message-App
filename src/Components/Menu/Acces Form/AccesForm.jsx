@@ -80,7 +80,7 @@ const AccesForm = ({
               <br />
               <br />
               <p className="SignUp-SignIn">
-                Already have an account?
+                Already have an account?{" "}
                 {type === "Log In" ? (
                   <a href="signup">Sign Up</a>
                 ) : (

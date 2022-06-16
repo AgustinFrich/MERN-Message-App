@@ -2,8 +2,8 @@
 import React, { useEffect } from "react";
 import "./ChatMessages.css";
 import { useSocket } from "../../Providers/socketProvider";
-const ChatMessages = ({ user }) => {
-  const { messages, getChats, otherUser, newMessage } = useSocket();
+const ChatMessages = () => {
+  const { messages, getChats, user, otherUser, newMessage } = useSocket();
 
   useEffect(() => {
     getChats(user, otherUser);
@@ -12,16 +12,20 @@ const ChatMessages = ({ user }) => {
   return (
     <div className="center">
       <hr />
-      <h2>Chat Messages</h2>
       {messages.map((message, key) => {
+        const isMine = message.senderId === user.id;
         return (
           <div key={key}>
-            <div
-              className={
-                message.senderId === user.id ? "myMessage" : "otherMessage"
-              }
-            >
-              <p className="messageName">{message.senderName}</p>
+            <div className={isMine ? "myMessage" : "otherMessage"}>
+              {isMine ? (
+                <svg height="8" className="mySvg">
+                  <path d="M0 8 L0 0 L8 0 Z" />
+                </svg>
+              ) : (
+                <svg className="otherSvg">
+                  <path d="M8 8 L0 0 L8 0 Z" />
+                </svg>
+              )}
               <p className="message">{message.message}</p>
             </div>
           </div>

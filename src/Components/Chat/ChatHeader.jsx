@@ -1,13 +1,28 @@
 import React from "react";
+import "../Menu/Profile.css";
+import { useSocket } from "../../Providers/socketProvider";
 
 const ChatHeader = () => {
-  let contact = { name: "AGUS", profileImg: "./logo192.png" };
+  const { otherUser } = useSocket();
+  const image =
+    otherUser.profileImg !== ""
+      ? otherUser.profileImg
+      : "https://mern-message-frich.herokuapp.com/images/profiles/DEFAULT.png";
+
   return (
     <div>
       <hr />
-      <h2>Chat Header</h2>
-      <img src={contact.profileImg} alt="." />
-      <p>{contact.name}</p>
+      <div className="Profile">
+        <img className="Profile-Image" src={image} alt="" />
+        <div className="Profile-Name">{otherUser.name}</div>
+
+        <svg
+          height="16"
+          className={otherUser.connected ? "Profile-Online" : "Profile-Offline"}
+        >
+          <circle cx="8" cy="8" r="4" />
+        </svg>
+      </div>
     </div>
   );
 };

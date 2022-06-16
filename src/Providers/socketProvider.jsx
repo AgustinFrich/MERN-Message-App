@@ -16,6 +16,7 @@ const SocketContextProvider = ({ children }) => {
   const [newMessage, setNewMessage] = useState();
   const [otherUser, setOtherUser] = useState(false);
   const [userList, setUserList] = useState([]);
+  const [user, setUser] = useState({ setted: false });
 
   const socket = io(API_URL, {
     reconnection: true,
@@ -35,16 +36,24 @@ const SocketContextProvider = ({ children }) => {
     setUserList(newList);
   };
 
-  const socketUsers = (user) => {
+  const socketUsers = async (user, otherUser) => {
     socket.on("user-connected", async (newUser) => {
       //Toast newUser.name is now online!
       await getUsers(user);
     });
 
     socket.on("user-disconnected", async (disconnectedUser) => {
-      await getUsers(user);
       //Toast disconnectedUser.name disconnected!
+      await getUsers(user);
+      if (disconnectedUser.id === otherUser.id) {
+        setOtherUser(false);
+      }
     });
+  };
+
+  const unsocketUsers = () => {
+    socket.off("user-connected");
+    socket.off("user-disconnected");
   };
 
   const joinUser = async (userData) => {
@@ -102,7 +111,10 @@ const SocketContextProvider = ({ children }) => {
   return (
     <SocketContext.Provider
       value={{
+        user,
+        setUser,
         socketUsers,
+        unsocketUsers,
         getUsers,
         joinUser,
         sendMessage,
