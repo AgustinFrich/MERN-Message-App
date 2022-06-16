@@ -18,6 +18,7 @@ const ChatHeader = () => {
 
         <svg
           height="16"
+          width="16"
           className={otherUser.connected ? "Profile-Online" : "Profile-Offline"}
         >
           <circle cx="8" cy="8" r="4" />

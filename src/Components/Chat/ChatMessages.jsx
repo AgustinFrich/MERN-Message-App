@@ -18,11 +18,11 @@ const ChatMessages = () => {
           <div key={key}>
             <div className={isMine ? "myMessage" : "otherMessage"}>
               {isMine ? (
-                <svg height="8" className="mySvg">
+                <svg height="8" width="8" className="mySvg">
                   <path d="M0 8 L0 0 L8 0 Z" />
                 </svg>
               ) : (
-                <svg height="8" className="otherSvg">
+                <svg height="8" width="8" className="otherSvg">
                   <path d="M8 8 L0 0 L8 0 Z" />
                 </svg>
               )}
