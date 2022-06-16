@@ -1,51 +1,53 @@
-import { Button, Card, CardGroup, Form } from "react-bootstrap";
-import "./SignUp.css";
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useEnvironment from "../../../hooks/useEnvironment";
+import AccesForm from "./AccesForm";
 
 const SignUp = () => {
-  const image = require("./image.jpg");
-  return (
-    <div className="SignUp">
-      <br />
-      <CardGroup>
-        <Card>
-          <Card.Img src={image} alt="Card image" />
-          <Card.ImgOverlay className="SignUp-image">
-            <Card.Title className="SignUp-imageTitle">Sign Up</Card.Title>
-            <Card.Text>
-              Join us and share with us <br /> this wonderful experience.
-              <hr />
-            </Card.Text>
-          </Card.ImgOverlay>
-        </Card>
+  const { API_URL } = useEnvironment();
 
-        <Card>
-          <Form className="SignUp-Form">
-            <Form.Group className="SignUp-FormGroup">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                className="SignUp-EraseBorder "
-                type="text"
-                placeholder="E.g: John123"
-              />
-            </Form.Group>
-            <Form.Group className="SignUp-FormGroup">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                className="SignUp-EraseBorder"
-                as={Form.Control}
-                type="password"
-                placeholder="• • • • • • • •"
-              />
-            </Form.Group>
-            <Button className="SignUp-Button">Get Started</Button>
-            <p className="SignUp-SignIn">
-              Already have an account? <a href="log-in">Sign In</a>
-            </p>
-          </Form>
-        </Card>
-      </CardGroup>
-      <br />
-    </div>
+  //LOGIN
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const navigate = useNavigate();
+
+  const signup = async (e) => {
+    try {
+      setLoading(true);
+      e.preventDefault();
+      console.log(username);
+
+      const response = await axios.post(`${API_URL}/api/signup`, {
+        name: username,
+        password: password,
+      });
+
+      if (response.data.user) {
+        navigate("../login");
+      } else {
+        setErrorMsg(response.data.error);
+      }
+    } catch (error) {
+      setErrorMsg("Username or password are empty");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <AccesForm
+      action={signup}
+      type={"Sign Up"}
+      username={username}
+      setUsername={setUsername}
+      loading={loading}
+      password={password}
+      setPassword={setPassword}
+      errorMsg={errorMsg}
+    />
   );
 };
 

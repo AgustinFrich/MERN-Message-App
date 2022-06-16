@@ -1,182 +1,59 @@
-//import { useNavigate } from "react-router-dom";
-import { Button, Card, CardGroup, Form } from "react-bootstrap";
-import "./SignUp.css";
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useEnvironment from "../../../hooks/useEnvironment";
+import { useSocket } from "../../../Providers/socketProvider";
+import AccesForm from "./AccesForm";
 
-const Login = ({
-  loading,
-  login,
-  username,
-  setUsername,
-  password,
-  setPassword,
-  errorMsg,
-}) => {
-  // const navigate = useNavigate();
-  const image = "./LogInImage.jpg";
+const Login = ({ setUser }) => {
+  const { joinUser } = useSocket();
+  const { API_URL } = useEnvironment();
 
-  if (loading) {
-    return (
-      <div className="d-flex justify-content-center m-5">
-        <div className="p-4">
-          <h1>Loading</h1>
-          <hr />
-          <br />
-        </div>
-      </div>
-    );
-  }
+  //LOGIN
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const navigate = useNavigate();
+
+  const login = async (e) => {
+    try {
+      setLoading(true);
+      e.preventDefault();
+      console.log(username);
+
+      const response = await axios.get(
+        `${API_URL}/api/login/${username}&${password}`
+      );
+
+      if (response.data.user) {
+        // localStorage.setItem("token", response.data.user);
+        navigate("../dashboard");
+        response.data.user.setted = true;
+        setUser(response.data.user);
+        joinUser(response.data.user);
+      } else {
+        setErrorMsg(response.data.error);
+      }
+    } catch (error) {
+      setErrorMsg("Username or password are empty");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="SignUp">
-      <CardGroup className="SignUp-FirstCard">
-        <Card className="SignUp-FirstCard">
-          <Card.Img src={image} alt="Card image" />
-          <Card.ImgOverlay className="SignUp-image">
-            <Card.Title className="SignUp-imageTitle">Log In</Card.Title>
-            <Card.Text>
-              Join us and share with us <br /> this wonderful experience.
-              <hr />
-            </Card.Text>
-          </Card.ImgOverlay>
-        </Card>
-
-        <Card>
-          <Form className="SignUp-Form" onSubmit={login}>
-            <Form.Group className="SignUp-FormGroup">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                className="SignUp-EraseBorder "
-                type="text"
-                name="username"
-                placeholder="Examle123"
-                onChange={(e) => setUsername(e.target.value)}
-                value={username}
-              />
-            </Form.Group>
-            <Form.Group className="SignUp-FormGroup">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                className="SignUp-EraseBorder"
-                as={Form.Control}
-                name="password"
-                placeholder="• • • • • • • •"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-              />
-            </Form.Group>
-            {errorMsg !== "" ? (
-              <p style={{ color: "#FF0000" }}>{errorMsg}</p>
-            ) : (
-              <></>
-            )}
-            <Button className="SignUp-Button" type="submit">
-              Log In
-            </Button>
-            <p className="SignUp-SignIn">
-              Already have an account? <a href="log-in">Sign In</a>
-            </p>
-          </Form>
-        </Card>
-      </CardGroup>
-      <br />
-    </div>
+    <AccesForm
+      action={login}
+      type={"Log In"}
+      username={username}
+      setUsername={setUsername}
+      loading={loading}
+      password={password}
+      setPassword={setPassword}
+      errorMsg={errorMsg}
+    />
   );
 };
 
 export default Login;
-
-/*
-
-
-<div className="SignUp">
-      <br />
-      <CardGroup>
-        <Card>
-          <Card.Img src={image} alt="Card image" />
-          <Card.ImgOverlay className="SignUp-image">
-            <Card.Title className="SignUp-imageTitle">Sign Up</Card.Title>
-            <Card.Text>
-              Join us and share with us <br /> this wonderful experience.
-              <hr />
-            </Card.Text>
-          </Card.ImgOverlay>
-        </Card>
-
-        <Card>
-          <Form className="SignUp-Form">
-            <Form.Group className="SignUp-FormGroup">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                className="SignUp-EraseBorder "
-                type="text"
-                name="username"
-              placeholder="Examle123"
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
-              />
-            </Form.Group>
-            <Form.Group className="SignUp-FormGroup">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                className="SignUp-EraseBorder"
-                as={Form.Control}
-              name="password"
-              placeholder="• • • • • • • •"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              />
-            </Form.Group>
-            <Button className="SignUp-Button">Get Started</Button>
-            <p className="SignUp-SignIn">
-              Already have an account? <a href="log-in">Sign In</a>
-            </p>
-          </Form>
-        </Card>
-      </CardGroup>
-      <br />
-    </div>
-*/
-
-/*
-
-    <div className="d-flex justify-content-center m-5">
-      <div className="p-4">
-        <h1>Log In</h1>
-        <form onSubmit={login}>
-          <div className="d-grid justify-content-center">
-            <hr />
-            <h6 className="m-2">User name</h6>
-            <input
-              type={"text"}
-              name="username"
-              placeholder="Examle123"
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
-            ></input>
-            <h6 className="m-2">Password</h6>
-            <input
-              type={"password"}
-              name="password"
-              placeholder="••••••••"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            ></input>
-            <br />
-            {errorMsg !== "" ? (
-              <p style={{ color: "#FF0000" }}>{errorMsg}</p>
-            ) : (
-              <></>
-            )}
-            <br />
-            <button className=" btn btn-primary" type="submit">
-              Log In
-            </button>
-            <br />
-            <p>
-              Or else <a href="../signup">Sign Up</a>
-            </p>
-          </div>
-          <br />
-        </form>
-      </div>
-    </div>
-*/

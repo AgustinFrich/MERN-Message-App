@@ -1,12 +1,16 @@
 @media (max-width: 576px) {
   .SignUp {
-    width: 101%;
+    width: 100%;
   }
   .SignUp-FirstCard {
     height: 250px;
   }
   .SignUp-image {
     margin-top: 20%;
+  }
+
+  .SignUp-Form {
+    margin: 10%;
   }
 }
 @media (min-width: 577px) {
@@ -16,20 +20,16 @@
   .SignUp-image {
     margin-top: 30%;
   }
+
+  .SignUp-Form {
+    margin: 30% 10% 10% 10%;
+  }
 }
 
 .SignUp-image {
   margin-left: 15%;
   color: white;
   margin-right: 25%;
-}
-
-.SignUp-imageTitle {
-  font-size: 40px;
-}
-
-.SignUp-Form {
-  margin: 10%;
 }
 
 .SignUp-EraseBorder {
