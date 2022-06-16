@@ -22,7 +22,7 @@ const ChatMessages = () => {
                   <path d="M0 8 L0 0 L8 0 Z" />
                 </svg>
               ) : (
-                <svg className="otherSvg">
+                <svg height="8" className="otherSvg">
                   <path d="M8 8 L0 0 L8 0 Z" />
                 </svg>
               )}
