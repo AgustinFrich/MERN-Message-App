@@ -14,12 +14,14 @@ const DashBoard = () => {
     <>
       {user.setted === true ? (
         <div className="App">
+          <br />
           <div>
             <Profile />
             <SearchBar />
             <ChatList />
           </div>
           <div>{otherUser ? <Chat /> : <></>}</div>
+          <br />
         </div>
       ) : (
         navigate("../signup")
