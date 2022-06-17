@@ -28,3 +28,9 @@
 .Profile-Offline {
   fill: #777777;
 }
+
+.Profile-LastConnected {
+  margin-left: 20px;
+  margin-top: 12px;
+  font-size: 10px;
+}

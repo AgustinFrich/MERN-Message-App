@@ -11,6 +11,7 @@ const Profile = () => {
     detectOtherUser,
     user,
   } = useSocket();
+
   const [get, setGet] = useState(true);
 
   const image =
