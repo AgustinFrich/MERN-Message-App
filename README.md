@@ -1,10 +1,10 @@
 # MERN-Message-App
 A simple message application, in progress
 
-#Live example:
+# Live example:
 https://aesthetic-crumble-53bdb8.netlify.app/signup
 
-#To Do
+# To Do
 - JWT authentification
 - Toast importan messages
 - Friend list implementation (need to update api)
